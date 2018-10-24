@@ -2,14 +2,7 @@ package com.panda.cvsandroid;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.TextView;
-
-import com.panda.cvsandroid.network.models.login.login_response;
-import com.panda.cvsandroid.network.models.register.countries_response;
-import com.panda.cvsandroid.network.models.register.nationality_response;
-import com.panda.cvsandroid.network.models.search_result.Search_Result;
-import com.panda.cvsandroid.network.models.skillsAndJops.skillsAndjopsreponse;
 
 import java.util.HashMap;
 
@@ -35,6 +28,7 @@ public class TestActivity extends AppCompatActivity
     }
     private void Login()
     {
+        /*
         HashMap<String,String>parameters=new HashMap<String, String>();
         parameters.put("email","test.com");
         parameters.put("password","123");
@@ -71,134 +65,7 @@ public class TestActivity extends AppCompatActivity
 
             }
         });
-    }
-    public void getNatonalites()
-    {
-        cService.<nationality_response>FetchData(new nationality_response(), Headers, "nationalities", new HashMap<>(), new CService.CsCallBack() {
-                    @Override
-                    public <T> void Sucess(T Resposne) {
-                        nationality_response item = (nationality_response) Resposne;
-                        for (int i = 0; i < item.getData().size(); i++) {
-                            main.append("\t");
-                            main.append(item.getData().get(i).getNationalityName() + " / y " + item.getData().get(i).getNationalityId());
-                            main.append(" "+"\n");
-
-                        }
-                        main.append("---------------------------------------------------- \n");
-                        getjops();
-                    }
-
-
-
-            @Override
-                    public void Faild(Throwable t) {
-                        Log.v("faild", t.getLocalizedMessage());
-                    }
-                }
-
-
-        );
-
-    }
-    public void getCountries()
-    {
-        cService.<countries_response>FetchData(new countries_response(), Headers, "countries", new HashMap<>(), new CService.CsCallBack() {
-                    @Override
-                    public <T> void Sucess(T Resposne) {
-
-                        countries_response item = (countries_response) Resposne;
-                        for (int i = 0; i < item.getData().size(); i++)
-                        {
-                            main.append("\t");
-                            main.append(item.getData().get(i).getCountryName() + " / y " + item.getData().get(i).getCountryId());
-                            main.append(" "+"\n");
-
-                        }
-                        main.append("---------------------------------------------------- \n");
-                        getNatonalites();
-                    }
-
-                    @Override
-                    public void Faild(Throwable t) {
-                        Log.v("faild", t.getLocalizedMessage());
-
-                    }
-                }
-
-
-        );
-
-    }
-    private void getjops()
-    {
-        String url="skills";
-
-        cService.<skillsAndjopsreponse>FetchData(new skillsAndjopsreponse(), Headers, url, new HashMap<>(), new CService.CsCallBack() {
-                    @Override
-                    public <T> void Sucess(T Resposne) {
-
-                        skillsAndjopsreponse item = (skillsAndjopsreponse) Resposne;
-                        for (int i = 0; i < item.getData().size(); i++)
-                        {
-                            main.append("\t");
-                            main.append(item.getData().get(i).getSkillName()+" "+item.getData().get(i).getSkillId());
-                            main.append("\n");
-                            for (int j=0;j<item.getData().get(i).getJopitems().size();j++)
-                            {
-                                main.append(item.getData().get(i).getJopitems().get(j).getJobName()+"  ?  "+item.getData().get(i).getJopitems().get(j).getJobId());
-                            }
-
-
-
-                        }
-                        main.append("---------------------------------------------------- \n");
-getSearch();
-                    }
-
-                    @Override
-                    public void Faild(Throwable t) {
-                        Log.v("faild", t.getLocalizedMessage());
-
-                    }
-                }
-
-
-        );
-
-
-    }
-
-    private void getSearch()
-    {
-        String url="employees";
-        HashMap<String,String>parameters=new HashMap<String, String>();
-        parameters.put("skill_id","0");
-        parameters.put("job_id","0");
-        parameters.put("country_id","0");
-        parameters.put("nationality_id","0");
-        parameters.put("job_type","0");
-        cService.<Search_Result>FetchData(new Search_Result(), Headers, url,parameters, new CService.CsCallBack()
-        {
-            @Override
-            public <T> void Sucess(T Resposne)
-            {
-
-                Search_Result item = (Search_Result) Resposne;
-                for (int i = 0; i < item.getData().size(); i++)
-                {
-                    main.append(item.getData().get(i).getEmployeeName()+" \t "+item.getData().get(i).getEmployeeBio()+"\n"+item.getData().get(i).getProfilePath());
-                    main.append("\n");
-                }
-                main.append("---------------------------------------------------- \n");
-            }
-
-            @Override
-            public void Faild(Throwable t)
-            {
-                Log.v("faild", t.getMessage());
-
-            }});
-
+        */
     }
 
     @Override
