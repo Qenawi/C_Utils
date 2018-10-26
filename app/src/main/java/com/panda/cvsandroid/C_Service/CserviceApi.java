@@ -1,4 +1,4 @@
-package com.panda.cvsandroid;
+package com.panda.cvsandroid.C_Service;
 
 import com.google.gson.JsonElement;
 
@@ -14,6 +14,9 @@ import retrofit2.http.Url;
 
 public interface CserviceApi
 {
+    /*
+    has only get and post function to handel any api request
+     */
     @GET
     Single<JsonElement> CserviceGet(@HeaderMap HashMap<String, String> headers, @Url String url, @QueryMap HashMap<String, String> Data);
 
