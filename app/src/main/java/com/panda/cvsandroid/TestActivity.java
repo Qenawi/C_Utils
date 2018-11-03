@@ -1,34 +1,38 @@
 package com.panda.cvsandroid;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.TextView;
 
 import com.panda.cvsandroid.C_Service.CService;
+import com.panda.cvsandroid.databinding.TstBinding;
 import com.panda.cvsandroid.models.MovieResponse;
 
 import java.util.HashMap;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+public class TestActivity extends AppCompatActivity {
 
-public class TestActivity extends AppCompatActivity
-{
-    @BindView(R.id.main)
-    TextView main;
     private CService cService;
+    private TestActivity testActivity;
+    private CustomString asd;
+    private TstBinding binding;
+    private ViewControler viewControler;
+
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tst);
-        ButterKnife.bind(this);
+        asd = new CustomString("Loading", "");
+        binding = DataBindingUtil.setContentView(this, R.layout.tst);
+        binding.setText(asd);
+        viewControler = new ViewControler();
+        binding.setShowProgress(viewControler);
+        viewControler.setShowProgressBar(false);
         cService = new CService(this);
         get_Dummy_data_movies1();
     }
-    private void Test()
-    {
+
+    private void Test() {
         /*
         HashMap<String,String>parameters=new HashMap<String, String>();
         parameters.put("email","test.com");
@@ -68,42 +72,42 @@ public class TestActivity extends AppCompatActivity
         });
         */
     }
-    private void get_Dummy_data_movies1()
-    {
+
+    private void get_Dummy_data_movies1() {
+        viewControler.setShowProgressBar(true);
         HashMap<String, String> Headers = new HashMap<>();
         HashMap<String, String> Params = new HashMap<>();
-        Params.put("api_key",Contstants.TMDP_API_KEY);
-        String Url=Contstants.Movies_BASE_URL+Contstants.PopularURL;
-        cService.FetchData(new MovieResponse(), Headers, Url, Params, new CService.CsCallBack()
-        {
+        Params.put("api_key", Contstants.TMDP_API_KEY);
+        String Url = Contstants.Movies_BASE_URL + Contstants.PopularURL;
+        cService.FetchData(new MovieResponse(), Headers, Url, Params, new CService.CsCallBack() {
             @Override
-            public <T> void Sucess(T Resposne)
-            {
-                MovieResponse e= (MovieResponse) Resposne;
-                main.append("\n");
-                main.append("-----------------------------------------------------------------");
-                main.append("\n");
-                main.append("Sucess");
-                for (int i =0; i< e.getMovies().size();i++)
-                {
-                    main.append(e.getMovies().get(i).getTitle()+"\t"+e.getMovies().get(i)
-                    .getOverview()
-                    );
-                 main.append("\n");
+            public <T> void Sucess(T Resposne) {
+                MovieResponse e = (MovieResponse) Resposne;
+                asd.append("\n");
+                asd.append("-----------------------------------------------------------------");
+                asd.append("\n");
+                asd.append("Sucess");
+                for (int i = 0; i < e.getMovies().size(); i++) {
+                    asd.append(e.getMovies().get(i).getTitle() + "\t" + e.getMovies().get(i)
+                            .getOverview());
+                    asd.append("\n");
                 }
+                asd.setProfileImage("https://avatars0.githubusercontent.com/u/16395007?s=400&v=4");
                 get_Dummy_data_movies2();
             }
 
             @Override
-            public void Faild(Throwable t)
-            {
+            public void Faild(Throwable t) {
                 Log.v("faildHeHe", t.getMessage());
 
             }
         });
     }
-    private void get_Dummy_data_movies2()
-    {
+
+    private void get_Dummy_data_movies2() {
+        viewControler.setShowProgressBar(false);
+
+        /*
         HashMap<String, String> Headers = new HashMap<>();
         HashMap<String, String> Params = new HashMap<>();
         String Url=Contstants.Movies_BASE_URL+Contstants.Top_RatedURL;
@@ -134,10 +138,12 @@ public class TestActivity extends AppCompatActivity
 
             }
         });
+        */
     }
+
     @Override
-    protected void onPause()
-    {
+    protected void onPause() {
         super.onPause();
     }
+
 }

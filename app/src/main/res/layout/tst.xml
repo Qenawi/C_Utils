@@ -1,19 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:text="loading ..."
-            android:layout_marginTop="30dp"
-            android:textSize="14sp"
-            android:id="@+id/main"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </android.support.v4.widget.NestedScrollView>
 
-</LinearLayout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.panda.cvsandroid.BindingUtils" />
+
+        <variable
+            name="text"
+            type="com.panda.cvsandroid.CustomString" />
+
+        <variable
+            name="ShowProgress"
+            type="com.panda.cvsandroid.ViewControler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/main_Home"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:profileImage="@{text.profileImage}" />
+
+                    <TextView
+                        android:id="@+id/main"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:text="@{BindingUtils.capitalize(text.myText)}"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progress"
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:visibility="@{BindingUtils.SetVisibile(ShowProgress)}" />
+            </FrameLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

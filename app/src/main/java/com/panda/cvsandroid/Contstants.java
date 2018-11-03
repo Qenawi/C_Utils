@@ -12,4 +12,5 @@ public class Contstants
     public static final String PopularURL = "movie/popular";
     public static final String Top_RatedURL = "movie/top_rated";
     public static final String Movies_BASE_URL = "https://api.themoviedb.org/3/";
+
 }

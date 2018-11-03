@@ -68,15 +68,14 @@ ext {
     retrofitConverterVersion = '2.3.0'
     okhttpVersion = '3.8.0'
 
-    squareDependencies = [
-
-
+    squareDependencies =
+            [
             retrofit       : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
             adapter_rx_java: "com.squareup.retrofit2:adapter-rxjava2:${retrofitRxVersion}",
             converter_gson : "com.squareup.retrofit2:converter-gson:${retrofitConverterVersion}",
             okHttp         : "com.squareup.okhttp3:okhttp:${okhttpVersion}",
             okHttpLoging   : "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}"
-    ]
+             ]
 
     rxandroidVersion = '2.0.1'
     rxjavaVersion = '2.1.5'
