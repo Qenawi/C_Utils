@@ -31,8 +31,7 @@ public class TestActivity2 extends AppCompatActivity
 
     }
     WebViewClient yourWebClient = new WebViewClient()
-    {
-
+       {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url)
         {
@@ -40,10 +39,11 @@ public class TestActivity2 extends AppCompatActivity
         }
 
         @Override
-        public void onPageFinished(WebView view, String url) {
+        public void onPageFinished(WebView view, String url)
+        {
             wb.loadUrl("javascript:HtmlViewer.showHTML" +
                     "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');");
         }
-    };
+        };
 
 }

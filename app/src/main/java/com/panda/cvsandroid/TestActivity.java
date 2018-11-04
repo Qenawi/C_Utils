@@ -20,14 +20,15 @@ public class TestActivity extends AppCompatActivity {
     private ViewControler viewControler;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         asd = new CustomString("Loading", "");
         binding = DataBindingUtil.setContentView(this, R.layout.tst);
         binding.setText(asd);
         viewControler = new ViewControler();
-        binding.setShowProgress(viewControler);
         viewControler.setShowProgressBar(false);
+        binding.setShowProgress(viewControler);
         cService = new CService(this);
         get_Dummy_data_movies1();
     }
@@ -73,7 +74,8 @@ public class TestActivity extends AppCompatActivity {
         */
     }
 
-    private void get_Dummy_data_movies1() {
+    private void get_Dummy_data_movies1()
+    {
         viewControler.setShowProgressBar(true);
         HashMap<String, String> Headers = new HashMap<>();
         HashMap<String, String> Params = new HashMap<>();
