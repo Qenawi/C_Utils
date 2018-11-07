@@ -11,7 +11,8 @@ import com.panda.cvsandroid.models.MovieResponse;
 
 import java.util.HashMap;
 
-public class TestActivity extends AppCompatActivity {
+public class TestActivity extends AppCompatActivity
+{
 
     private CService cService;
     private TestActivity testActivity;
@@ -33,7 +34,8 @@ public class TestActivity extends AppCompatActivity {
         get_Dummy_data_movies1();
     }
 
-    private void Test() {
+    private void Test()
+    {
         /*
         HashMap<String,String>parameters=new HashMap<String, String>();
         parameters.put("email","test.com");
@@ -147,5 +149,7 @@ public class TestActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
     }
+
+
 
 }

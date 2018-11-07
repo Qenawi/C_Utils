@@ -50,9 +50,11 @@ public  class MovieResponse
         this.totalPages = totalPages;
     }
 
-    public List<Movie> getMovies() {
+    public List<Movie> getMovies()
+    {
         return Movies;
     }
+
 
     public void setMovies(List<Movie> results) {
         this.Movies = results;
