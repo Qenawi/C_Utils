@@ -8,7 +8,8 @@ import com.panda.cvsandroid.mvvm_and_databinding.databinding.AppDataBindingCompo
 public class App extends Application
 {
     @Override
-    public void onCreate() {
+    public void onCreate()
+    {
         super.onCreate();
         DataBindingUtil.setDefaultComponent(new AppDataBindingComponent());
     }

@@ -15,10 +15,19 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/data_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="300dp"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
         app:adapter="@{viewModel.adapter}"
         app:data="@{viewModel.data}"
+        tools:context=".mvvm_and_databinding.view.MainActivity" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/data_recycler_view2"
+        android:layout_marginTop="300dp"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        app:adapter="@{viewModel.adapter2}"
+        app:data="@{viewModel.data2}"
         tools:context=".mvvm_and_databinding.view.MainActivity" />
     <ProgressBar
         android:visibility="@{LayOut_Utils.SetVisibility(viewModel.LockLayout)}"

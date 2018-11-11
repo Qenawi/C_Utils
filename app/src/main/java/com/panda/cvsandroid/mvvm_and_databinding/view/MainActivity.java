@@ -12,6 +12,7 @@ import android.view.View;
 import com.panda.cvsandroid.C_Service.CService;
 import com.panda.cvsandroid.Contstants;
 import com.panda.cvsandroid.R;
+import com.panda.cvsandroid.WorkManger.CompressWorker;
 import com.panda.cvsandroid.databinding.ActivityMainBinding;
 import com.panda.cvsandroid.models.Movie;
 import com.panda.cvsandroid.models.MovieResponse;
@@ -20,6 +21,9 @@ import com.panda.cvsandroid.mvvm_and_databinding.viewmodel.View_model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 import static android.widget.LinearLayout.VERTICAL;
 
@@ -30,19 +34,31 @@ public class MainActivity extends AppCompatActivity {
     private View_model view_model;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View view = bind();
         cService = new CService(this);
-        view_model= ViewModelProviders.of(this).get(View_model.class);
+        view_model = ViewModelProviders.of(this).get(View_model.class);
         initRecyclerView(view);
-        if (view_model.getData()==null||view_model.getData().isEmpty())
-        get_Dummy_data_movies1();
-        else
-         {
-          dataViewModel.setUp((ArrayList<Movie>) view_model.getData());
-         }
+    //    if (view_model.getData() == null || view_model.getData().isEmpty())
+      //      get_Dummy_data_movies1();
+   //     else {
+    //        dataViewModel.setUp((ArrayList<Movie>) view_model.getData(),(ArrayList<String>) view_model.getData2());
+     //   }
+                    OneTimeWorkRequest compressionWork =
+                new OneTimeWorkRequest.Builder(CompressWorker.class)
+                        .build();
+                    WorkManager.getInstance().enqueue(compressionWork);
+
+        WorkManager.getInstance().getWorkInfoByIdLiveData(compressionWork.getId())
+                .observe(this, workInfo ->
+                {
+                    // Do something with the status
+                    if (workInfo != null && workInfo.getState().isFinished())
+                    {
+                        Log.v("WorkThreadRes",workInfo.getState().name());
+                    }
+                });
     }
 
     private void get_Dummy_data_movies1() {
@@ -53,11 +69,10 @@ public class MainActivity extends AppCompatActivity {
         String Url = Contstants.Movies_BASE_URL + Contstants.PopularURL;
         cService.FetchData(new MovieResponse(), Headers, Url, Params, new CService.CsCallBack() {
             @Override
-            public <T> void Sucess(T Resposne)
-            {
+            public <T> void Sucess(T Resposne) {
                 dataViewModel.setLockLayout(false);
-                view_model.setData(((MovieResponse)Resposne).getMovies());
-                dataViewModel.setUp((ArrayList<Movie>) view_model.getData());
+                view_model.setData(((MovieResponse) Resposne).getMovies());
+                dataViewModel.setUp((ArrayList<Movie>) view_model.getData(),(ArrayList<String>)view_model.getData2());
             }
 
             @Override
@@ -67,12 +82,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
-        dataViewModel.setUp(null);
+        dataViewModel.setUp(null,null);
     }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -88,6 +104,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void initRecyclerView(View view) {
         RecyclerView recyclerView = view.findViewById(R.id.data_recycler_view);
+        RecyclerView recyclerView2 = view.findViewById(R.id.data_recycler_view2);
+
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), VERTICAL));
+        recyclerView2.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), VERTICAL));
+
     }
 }

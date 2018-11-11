@@ -23,7 +23,8 @@ public class DataItemViewModel extends BaseObservable
     }
 
     @Bindable
-    public String getTitle() {
+    public String getTitle()
+    {
         return !TextUtils.isEmpty(dataModel.getTitle()) ? dataModel.getTitle() : "";
     }
 }

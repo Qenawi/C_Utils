@@ -1,11 +1,12 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 def root = rootProject.ext;
 
 android {
     dataBinding {
         enabled = true
 
-                }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.panda.cvsandroid"
@@ -79,8 +80,12 @@ dependencies {
     //
     implementation 'com.akexorcist:localizationactivity:1.2.2'
 
-
     //noinspection GradleCompatible
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'android.arch.work:work-runtime:1.0.0-alpha11'
+}
+repositories {
+    mavenCentral()
 }
