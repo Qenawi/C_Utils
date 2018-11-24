@@ -13,13 +13,11 @@ import java.util.HashMap;
 
 public class TestActivity extends AppCompatActivity
 {
-
     private CService cService;
     private TestActivity testActivity;
     private CustomString asd;
     private TstBinding binding;
     private ViewControler viewControler;
-
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -31,9 +29,10 @@ public class TestActivity extends AppCompatActivity
         viewControler.setShowProgressBar(false);
         binding.setShowProgress(viewControler);
         cService = new CService(this);
-        get_Dummy_data_movies1();
+       //get_Dummy_data_movies1();
+    //    mDevicePolicyManager.setLockTaskPackages(mAdminComponentName, arrayOf(packageName));
+        startLockTask();
     }
-
     private void Test()
     {
         /*
@@ -149,7 +148,6 @@ public class TestActivity extends AppCompatActivity
     protected void onPause() {
         super.onPause();
     }
-
 
 
 }

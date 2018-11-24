@@ -4,13 +4,13 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.text.TextUtils;
 
-import com.panda.cvsandroid.models.Movie;
+import com.panda.cvsandroid.models.Moviex;
 
 public class DataItemViewModel extends BaseObservable
 {
-    private Movie dataModel;
+    private Moviex dataModel;
 
-    public DataItemViewModel(Movie dataModel) {
+    public DataItemViewModel(Moviex dataModel) {
         this.dataModel = dataModel;
     }
 

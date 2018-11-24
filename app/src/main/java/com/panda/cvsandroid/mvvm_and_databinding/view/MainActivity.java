@@ -2,6 +2,7 @@ package com.panda.cvsandroid.mvvm_and_databinding.view;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
+import android.graphics.Movie;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -14,7 +15,6 @@ import com.panda.cvsandroid.Contstants;
 import com.panda.cvsandroid.R;
 import com.panda.cvsandroid.WorkManger.CompressWorker;
 import com.panda.cvsandroid.databinding.ActivityMainBinding;
-import com.panda.cvsandroid.models.Movie;
 import com.panda.cvsandroid.models.MovieResponse;
 import com.panda.cvsandroid.mvvm_and_databinding.viewmodel.DataViewModel;
 import com.panda.cvsandroid.mvvm_and_databinding.viewmodel.View_model;
@@ -27,12 +27,12 @@ import androidx.work.WorkManager;
 
 import static android.widget.LinearLayout.VERTICAL;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
 
     private DataViewModel dataViewModel;
     private CService cService;
     private View_model view_model;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

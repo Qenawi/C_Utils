@@ -4,7 +4,7 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
 import com.panda.cvsandroid.BR;
-import com.panda.cvsandroid.models.Movie;
+import com.panda.cvsandroid.models.Moviex;
 import com.panda.cvsandroid.mvvm_and_databinding.adapter.DataAdapter;
 import com.panda.cvsandroid.mvvm_and_databinding.adapter.DataAdapterStrings;
 
@@ -16,7 +16,7 @@ public class DataViewModel extends BaseObservable
     private static final String TAG = "DataViewModel";
     private DataAdapter adapter;
     private DataAdapterStrings adapter2;
-    private List<Movie> data ;
+    private List<Moviex> data ;
     private List<String>data2;
 
     @Bindable
@@ -31,7 +31,8 @@ public class DataViewModel extends BaseObservable
     }
     private Boolean LockLayout = false;
 
-    public DataViewModel() {
+    public DataViewModel()
+    {
         data = new ArrayList<>();
         adapter = new DataAdapter();
 
@@ -42,7 +43,7 @@ public class DataViewModel extends BaseObservable
 
 
     @Bindable
-    public List<Movie> getData() {
+    public List<Moviex> getData() {
         return this.data;
     }
     @Bindable
@@ -72,7 +73,7 @@ public class DataViewModel extends BaseObservable
         notifyPropertyChanged(BR.data2);
     }
    //--life cycle aware------------
-   public void setUp(ArrayList<Movie> tempo,ArrayList<String>data2)
+   public void setUp(ArrayList<Moviex> tempo,ArrayList<String>data2)
    {
        // perform set up tasks, such as adding listeners, data population, etc.
        if (tempo != null && !tempo.isEmpty())

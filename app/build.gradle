@@ -1,11 +1,9 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 def root = rootProject.ext;
-
 android {
     dataBinding {
         enabled = true
-
     }
     compileSdkVersion 28
     defaultConfig {

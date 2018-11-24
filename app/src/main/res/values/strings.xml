@@ -6,4 +6,12 @@
 
 
     <string name="photo">photo</string>
+    <string name="adminreceiverstatus">AdminReceiverStatus</string>
+    <string name="admin_receiver_status_enabled">admin_receiver_status_enabled</string>
+    <string name="admin_receiver_status_disable_warning">admin_receiver_status_disable_warning</string>
+    <string name="admin_receiver_status_disabled">admin_receiver_status_disabled</string>
+    <string name="admin_receiver_status_pw_changed">admin_receiver_status_pw_changed</string>
+    <string name="admin_description">MrQenawi</string>
+
+
 </resources>

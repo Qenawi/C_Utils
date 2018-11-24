@@ -16,7 +16,8 @@ public class CustomString extends BaseObservable
     }
 
     @Bindable
-    public String getMyText() {
+    public String getMyText()
+    {
         return myText;
     }
 

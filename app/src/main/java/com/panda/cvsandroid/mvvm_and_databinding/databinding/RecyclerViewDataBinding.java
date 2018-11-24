@@ -1,9 +1,9 @@
 package com.panda.cvsandroid.mvvm_and_databinding.databinding;
 
 import android.databinding.BindingAdapter;
+import android.graphics.Movie;
 import android.support.v7.widget.RecyclerView;
 
-import com.panda.cvsandroid.models.Movie;
 import com.panda.cvsandroid.mvvm_and_databinding.adapter.DataAdapter;
 import com.panda.cvsandroid.mvvm_and_databinding.adapter.DataAdapterStrings;
 
