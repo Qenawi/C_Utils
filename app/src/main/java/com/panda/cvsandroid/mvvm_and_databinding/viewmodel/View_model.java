@@ -2,7 +2,7 @@ package com.panda.cvsandroid.mvvm_and_databinding.viewmodel;
 
 import android.arch.lifecycle.ViewModel;
 
-import com.panda.cvsandroid.models.Moviex;
+import com.panda.cvsandroid.network.models.Moviex;
 
 import java.util.ArrayList;
 import java.util.List;

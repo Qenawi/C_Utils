@@ -4,7 +4,7 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
 import com.panda.cvsandroid.BR;
-import com.panda.cvsandroid.models.Moviex;
+import com.panda.cvsandroid.network.models.Moviex;
 import com.panda.cvsandroid.mvvm_and_databinding.adapter.DataAdapter;
 import com.panda.cvsandroid.mvvm_and_databinding.adapter.DataAdapterStrings;
 

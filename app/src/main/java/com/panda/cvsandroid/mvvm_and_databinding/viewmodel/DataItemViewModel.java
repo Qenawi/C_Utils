@@ -4,7 +4,7 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.text.TextUtils;
 
-import com.panda.cvsandroid.models.Moviex;
+import com.panda.cvsandroid.network.models.Moviex;
 
 public class DataItemViewModel extends BaseObservable
 {

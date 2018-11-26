@@ -4,13 +4,14 @@ import android.content.Context
 import android.util.Log
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import com.panda.cvsandroid.C_Service.CService
-import com.panda.cvsandroid.Contstants
-import com.panda.cvsandroid.models.MovieResponse
+import com.panda.cvsandroid.Cservice.CService
+import com.panda.cvsandroid.network.models.MovieResponse
+import com.panda.cvsandroid.utils.Contstants
 import java.util.*
 
 class CompressWorker(Context: Context, params: WorkerParameters)
-    : Worker(Context, params) {
+    : Worker(Context, params)
+{
     override fun doWork(): Result
     {
 
@@ -33,7 +34,8 @@ class CompressWorker(Context: Context, params: WorkerParameters)
         val Url = Contstants.Movies_BASE_URL + Contstants.PopularURL
         cService.FetchData(MovieResponse(), Headers, Url, Params, object : CService.CsCallBack {
 
-            override fun <T> Sucess(Resposne: T) {
+            override fun <T> Sucess(Resposne: T)
+            {
                 val e = Resposne as MovieResponse
                 Log.v("Qean", e.totalResults.toString())
                 Result.SUCCESS
@@ -42,6 +44,7 @@ class CompressWorker(Context: Context, params: WorkerParameters)
 
             override fun Faild(t: Throwable?) {
                 //  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                Log.v("Qean", "Faild")
                 Result.FAILURE
             }
         })

@@ -1,11 +1,11 @@
 package com.panda.cvsandroid.mvvm_and_databinding.databinding;
 
 import android.databinding.BindingAdapter;
-import android.graphics.Movie;
 import android.support.v7.widget.RecyclerView;
 
 import com.panda.cvsandroid.mvvm_and_databinding.adapter.DataAdapter;
 import com.panda.cvsandroid.mvvm_and_databinding.adapter.DataAdapterStrings;
+import com.panda.cvsandroid.network.models.Moviex;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class RecyclerViewDataBinding
      * @param data         must be explicitly passed in
      */
     @BindingAdapter({"app:adapter", "app:data"})
-    public void bind(RecyclerView recyclerView, DataAdapter adapter, List<Movie> data)
+    public void bind(RecyclerView recyclerView, DataAdapter adapter, List<Moviex> data)
     {
         recyclerView.setAdapter(adapter);
         adapter.updateData(data);

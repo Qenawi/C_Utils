@@ -1,7 +1,6 @@
 package com.panda.cvsandroid.mvvm_and_databinding.adapter;
 
 import android.databinding.DataBindingUtil;
-import android.graphics.Movie;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +10,7 @@ import android.widget.FrameLayout;
 import com.panda.cvsandroid.R;
 import com.panda.cvsandroid.databinding.ItemDataBinding;
 import com.panda.cvsandroid.mvvm_and_databinding.viewmodel.DataItemViewModel;
+import com.panda.cvsandroid.network.models.Moviex;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ import io.reactivex.annotations.Nullable;
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataViewHolder>
 {
     private static final String TAG = "DataAdapter";
-    private List<Movie> data;
+    private List<Moviex> data;
 
     public DataAdapter() {
         this.data = new ArrayList<>();
@@ -36,7 +36,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataViewHolder
     @Override
     public void onBindViewHolder(DataViewHolder holder, int position)
     {
-        Movie dataModel = data.get(position);
+        Moviex dataModel = data.get(position);
         holder.setViewModel(new DataItemViewModel(dataModel));
     }
 
@@ -58,7 +58,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataViewHolder
         holder.unbind();
     }
 
-    public void updateData(@Nullable List<Movie> data)
+    public void updateData(@Nullable List<Moviex> data)
     {
         if (data == null || data.isEmpty()) {
             this.data.clear();
