@@ -3,35 +3,37 @@
 buildscript {
     ext.kotlin_version = '1.2.50'
 
-    repositories {
+    repositories
+            {
         google()
         jcenter()
         mavenCentral()
-    }
-    dependencies {
+             }
+    dependencies
+       {
         classpath 'com.android.tools.build:gradle:3.1.4'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-    }
-}
+      }
+      }
+allprojects
+        {
+            repositories {
+                google()
+                jcenter()
+                mavenCentral()
 
-allprojects {
-    repositories {
-        google()
-        jcenter()
-        mavenCentral()
-
-    }
-}
+            }
+        }
 ext {
     supportLibrayVersion = '27.1.0'
     constraintLayoutVersion = '1.0.2'
     configuration = [
 
             package          : "com.app.mvvm_model",
-            compileSdkVersion:27,
+            compileSdkVersion: 27,
             targetSdkVersion : 28,
             minSdkVersion    : 26,
             buildToolsVersion: "27.0.2",
@@ -72,12 +74,12 @@ ext {
 
     squareDependencies =
             [
-            retrofit       : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
-            adapter_rx_java: "com.squareup.retrofit2:adapter-rxjava2:${retrofitRxVersion}",
-            converter_gson : "com.squareup.retrofit2:converter-gson:${retrofitConverterVersion}",
-            okHttp         : "com.squareup.okhttp3:okhttp:${okhttpVersion}",
-            okHttpLoging   : "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}"
-             ]
+                    retrofit       : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+                    adapter_rx_java: "com.squareup.retrofit2:adapter-rxjava2:${retrofitRxVersion}",
+                    converter_gson : "com.squareup.retrofit2:converter-gson:${retrofitConverterVersion}",
+                    okHttp         : "com.squareup.okhttp3:okhttp:${okhttpVersion}",
+                    okHttpLoging   : "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}"
+            ]
 
     rxandroidVersion = '2.0.1'
     rxjavaVersion = '2.1.5'
@@ -124,9 +126,9 @@ ext {
 
     leakcanaryVersion = '1.5.4'
     stethoVersion = '1.5.0'
-    multidexVersion='1.0.3'
+    multidexVersion = '1.0.3'
     developerDependancies = [
-            multidex:"com.android.support:multidex:${multidexVersion}",
+            multidex         : "com.android.support:multidex:${multidexVersion}",
             stetho           : "com.facebook.stetho:stetho:${stethoVersion}",
             stethoOkHttp     : "com.facebook.stetho:stetho-okhttp3:${stethoVersion}",
             leakCanaryDebug  : "com.squareup.leakcanary:leakcanary-android:${leakcanaryVersion}",
@@ -134,20 +136,20 @@ ext {
             leakCanaryTest   : "com.squareup.leakcanary:leakcanary-android-no-op:${leakcanaryVersion}"
     ]
 
-    GlideVersion='4.5.0'
-    glideDependancies=
+    GlideVersion = '4.5.0'
+    glideDependancies =
             [
-                    glide:"com.github.bumptech.glide:glide:${GlideVersion}",
-                    glideAndroidProcessor:"com.github.bumptech.glide:compiler:${GlideVersion}"
+                    glide                : "com.github.bumptech.glide:glide:${GlideVersion}",
+                    glideAndroidProcessor: "com.github.bumptech.glide:compiler:${GlideVersion}"
 
             ]
 
 
-    androidyoutubeplayerVersion='8.0.1'
+    androidyoutubeplayerVersion = '8.0.1'
     androidyoutubeplayerDependancies =
             [
 
-                    androidyoutubeplayer :"com.pierfrancescosoffritti.androidyoutubeplayer:core:${androidyoutubeplayerVersion}"
+                    androidyoutubeplayer: "com.pierfrancescosoffritti.androidyoutubeplayer:core:${androidyoutubeplayerVersion}"
 
             ]
 
