@@ -16,6 +16,7 @@
         android:id="@+id/data_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:visibility="gone"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
         app:adapter="@{viewModel.adapter}"
         app:data="@{viewModel.data}"
@@ -24,6 +25,8 @@
         android:id="@+id/data_recycler_view2"
         android:layout_marginTop="300dp"
         android:layout_width="match_parent"
+        android:visibility="gone"
+
         android:layout_height="300dp"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
         app:adapter="@{viewModel.adapter2}"
@@ -32,8 +35,15 @@
     <ProgressBar
         android:visibility="@{LayOut_Utils.SetVisibility(viewModel.LockLayout)}"
         android:layout_gravity="center"
+
         android:layout_width="50dp"
         android:layout_height="50dp" />
+    <TextView
+        android:id="@+id/TextView"
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
     </FrameLayout>
 
 </layout>
