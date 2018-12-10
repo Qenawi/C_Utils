@@ -1,38 +1,26 @@
 package com.panda.cvsandroid.mvvm_and_databinding.view;
 
 import android.annotation.SuppressLint;
-import android.arch.lifecycle.Observer;
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.ComponentName;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.panda.cvsandroid.Cservice.CService;
 import com.panda.cvsandroid.R;
-import com.panda.cvsandroid.WorkManger.CompressWorker;
+import com.panda.cvsandroid.SocketIOBg.SocketIoService;
 import com.panda.cvsandroid.databinding.ActivityMainBinding;
 import com.panda.cvsandroid.mvvm_and_databinding.viewmodel.DataViewModel;
 import com.panda.cvsandroid.mvvm_and_databinding.viewmodel.View_model;
-import com.panda.cvsandroid.network.models.MovieResponse;
-import com.panda.cvsandroid.network.models.Moviex;
-import com.panda.cvsandroid.utils.Contstants;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.UUID;
 import java.util.concurrent.TimeUnit;
-
-import androidx.work.Constraints;
-import androidx.work.ExistingPeriodicWorkPolicy;
-import androidx.work.NetworkType;
-import androidx.work.PeriodicWorkRequest;
-import androidx.work.WorkInfo;
-import androidx.work.WorkManager;
 
 import static android.widget.LinearLayout.VERTICAL;
 
@@ -53,7 +41,7 @@ public class MainActivity extends AppCompatActivity  {
         cService = new CService(this);
         view_model = ViewModelProviders.of(this).get(View_model.class);
         initRecyclerView(view);
-
+/*
             Constraints c = new Constraints.Builder().setRequiresCharging(true).setRequiredNetworkType(NetworkType.CONNECTED).build();
             PeriodicWorkRequest compressionWork =
                     new PeriodicWorkRequest.Builder(CompressWorker.class, 20, TimeUnit.SECONDS)
@@ -72,8 +60,18 @@ public class MainActivity extends AppCompatActivity  {
                 }
             }
         });
-    }
+        */
+        JobScheduler jobScheduler = (JobScheduler)getApplicationContext()
+                .getSystemService(JOB_SCHEDULER_SERVICE);
+        ComponentName componentName = new ComponentName(this,
+                SocketIoService.class);
+        @SuppressLint({"NewApi", "LocalSuppress"}) JobInfo jobInfoObj = new JobInfo.Builder(1, componentName)
+                .setPeriodic(TimeUnit.MINUTES.toMillis(16)).setRequiresBatteryNotLow(true).build();
+        jobScheduler.schedule(jobInfoObj);
 
+
+    }
+/*
     private void get_Dummy_data_movies1() {
         dataViewModel.setLockLayout(true);
         HashMap<String, String> Headers = new HashMap<>();
@@ -95,7 +93,7 @@ public class MainActivity extends AppCompatActivity  {
             }
         });
     }
-
+*/
     @Override
     protected void onResume() {
         super.onResume();

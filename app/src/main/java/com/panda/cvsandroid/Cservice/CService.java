@@ -1,37 +1,17 @@
 package com.panda.cvsandroid.Cservice;
 
-import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.OnLifecycleEvent;
 import android.content.Context;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-
-import com.ebda3.jopiorders.home.log_out_alert_dialog.unAutrized_dialog;
-import com.ebda3.jopiorders.member.Sigin_In;
-import com.ebda3.jopiorders.network.SingleToneRetrofit;
-import com.ebda3.jopiorders.qenawi_trash_hacks.AlertDialogHandeler;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.SocketTimeoutException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
 
-import io.reactivex.Single;
-import io.reactivex.SingleSource;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
-import retrofit2.HttpException;
 
 /**
  * main target create new instance to each view (Activity/Fragment)
@@ -52,7 +32,8 @@ import retrofit2.HttpException;
  * 3-?
  * //
  **/
-public class CService implements LifecycleObserver {
+public class CService implements LifecycleObserver
+{
     /**
      * second ->1000 ms
      */
@@ -70,7 +51,7 @@ public class CService implements LifecycleObserver {
             Log.v("Life Cycle Yea", "ATTACHED");
         }
     }
-
+/*
     public <T extends CService_DBase> void FetchData(final T Obj, final HashMap<String, String> Header, final String Url, final HashMap<String, Object> requistBody, final CsCallBack f) {
         disposable.add(SingleToneRetrofit.<Gson>get_RetrofitCs().CserviceGet(Header, Url, requistBody).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .flatMap(jsonElement ->
@@ -296,11 +277,11 @@ public class CService implements LifecycleObserver {
         Log.v("Detached", "ATTACHED");
         /*
         view is not ready to handel api calls so cancel them
-         */
+
         AlertDialogHandeler.DismissDialog(null);
         disposable.clear();
     }
-
+ */
     public static boolean isNetworkAvailable (Context context)
     {
         if (connectedToTheNetwork(context))

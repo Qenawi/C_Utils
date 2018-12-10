@@ -3,6 +3,7 @@ package com.panda.cvsandroid.network.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.panda.cvsandroid.Cservice.CService_DBase;
 
 import java.util.List;
 

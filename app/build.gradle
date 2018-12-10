@@ -83,6 +83,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'android.arch.work:work-runtime:1.0.0-alpha11'
+    implementation 'com.github.nkzawa:socket.io-client:0.3.0'
+
 }
 repositories {
     mavenCentral()

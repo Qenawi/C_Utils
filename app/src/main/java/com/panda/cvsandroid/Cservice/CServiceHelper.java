@@ -2,7 +2,6 @@ package com.panda.cvsandroid.Cservice;
 
 import android.content.Context;
 
-import com.ebda3.jopiorders.R;
 
 class CServiceHelper {
     public static class ErrorCode {
@@ -27,10 +26,10 @@ class CServiceHelper {
     public static class C_Convertor
     {
         static String ActionToMsg(final Context c, final String Action) {
-            String Msg;
+            String Msg="";
             switch (Action) {
                 case ActionString.Action_1995_TimeOutConnection:
-                    Msg = c.getResources().getString(R.string.TimeOutExeption);
+               //     Msg = c.getResources().getString(R.string.TimeOutExeption);
                     break;
                 default:
                     Msg = ActionString.Action_Default;
@@ -40,10 +39,10 @@ class CServiceHelper {
         }
 
         public static String CodeToMsg(final Context c, final int Code) {
-            String Msg;
+            String Msg="";
             switch (Code) {
                 case ErrorCode.CODE_1995_TimeOutConnection:
-                    Msg = c.getResources().getString(R.string.TimeOutExeption);
+              //      Msg = c.getResources().getString(R.string.TimeOutExeption);
                     break;
                 default:
                     Msg = ActionString.Action_Default;
